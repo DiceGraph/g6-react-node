@@ -254,7 +254,9 @@ const getShapeFromReact = (REl: ReactElement): NodeInstructure => {
     }
     let children = [];
     if (typeof ochildren === 'object' && ochildren?.length) {
-      children = ochildren.filter((e: any) => !!e).map((e: ReactElement) => getShapeFromReact(e));
+      children = ochildren
+        .filter((e: any) => !!e)
+        .map((e: ReactElement) => getShapeFromReact(e));
     } else if (ochildren) {
       children = [getShapeFromReact(ochildren)];
     }
@@ -281,15 +283,16 @@ export const registerNodeReact = (el: ReactElement) => {
   return generateTarget(result);
 };
 
-export function createNodeFromReact(Component: React.FC<{ cfg: ModelConfig }>, graph?: Graph) {
+export function createNodeFromReact(
+  Component: React.FC<{ cfg: ModelConfig }>,
+  graph?: Graph,
+) {
   const structures: { [key: string]: NodeInstructure[] } = {};
   const compileXML = (cfg: ModelConfig) =>
     registerNodeReact(<Component cfg={cfg} />);
 
   if (graph) {
-    graph.on('node:click', (evt) => {
-      
-    })
+    graph.on('node:click', evt => {});
   }
 
   return {

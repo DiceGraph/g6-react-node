@@ -8,7 +8,7 @@ export interface TextStyle extends CommonShapeProps {
    * @description.zh-CN 对齐方式，对齐的点为文字x的点
    */
   textAlign?: 'center' | 'end' | 'left' | 'right' | 'start';
-   /**
+  /**
    * @description.en-US text baseline, affect relative position of y
    * @description.zh-CN 文字基线，基线在y坐标上
    */
@@ -17,31 +17,31 @@ export interface TextStyle extends CommonShapeProps {
    * @description.en-US CSS font-style
    * @description.zh-CN CSS font-style
    */
-  fontStyle?: CSSProperties['fontStyle'],
+  fontStyle?: CSSProperties['fontStyle'];
   /**
    * @description.en-US CSS font-weight
    * @description.zh-CN CSS font-weight
    */
-  fontWeight?: CSSProperties['fontWeight'],
+  fontWeight?: CSSProperties['fontWeight'];
   /**
    * @description.en-US CSS font-variant
    * @description.zh-CN CSS font-variant
    */
-  fontVariant?: CSSProperties['fontVariant'],
+  fontVariant?: CSSProperties['fontVariant'];
   /**
    * @description.en-US CSS font-size
    * @description.zh-CN CSS font-size
-   */  fontSize?: CSSProperties['fontSize'],
+   */ fontSize?: CSSProperties['fontSize'];
   /**
    * @description.en-US CSS font-family
    * @description.zh-CN CSS font-family
    */
-  fontFamily?: CSSProperties['fontFamily'],
+  fontFamily?: CSSProperties['fontFamily'];
   /**
    * @description.en-US CSS line-height
    * @description.zh-CN CSS line-height
    */
-  lineHeight?: CSSProperties['lineHeight'],
+  lineHeight?: CSSProperties['lineHeight'];
 }
 
 interface TextProps extends GroupProps {

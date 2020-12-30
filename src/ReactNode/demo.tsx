@@ -20,7 +20,12 @@ export const G6MiniDemo = ({
           meta: {
             creatorName: 'a_creator',
           },
-          id: 'node' + i + Math.random().toString(16).slice(-4),
+          id:
+            'node' +
+            i +
+            Math.random()
+              .toString(16)
+              .slice(-4),
           type: nodeType,
         })),
       edges: [],

@@ -1,4 +1,3 @@
-
 # Rect Style
 
 ```jsx
@@ -23,7 +22,7 @@ const ReactNode = ({ cfg = {} }) => {
           }}
           draggable="true"
         />
-          
+
         <Rect
           style={{
             width: 150,
@@ -40,9 +39,7 @@ const ReactNode = ({ cfg = {} }) => {
 
 G6.registerNode('test', createNodeFromReact(ReactNode));
 
-export default () => <G6MiniDemo nodeType="test" count={2} />
-
-
+export default () => <G6MiniDemo nodeType="test" count={2} />;
 ```
 
 <API src="./RectStyle.tsx" ></API>

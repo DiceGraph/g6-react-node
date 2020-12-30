@@ -78,17 +78,17 @@ export interface CommonShapeProps extends GShapeProps {
    * @description.en-US left margin of shape
    * @description.zh-CN 图形距离上一个元素的左间距
    */
-  marginLeft?: number,
+  marginLeft?: number;
   /**
    * @description.en-US top margin of shape
    * @description.zh-CN 图形距离上一个元素的上间距
    */
-  marginTop?: number,
+  marginTop?: number;
   /**
    * @description.en-US make next shape follow inline
    * @description.zh-CN 下一个图形的定位模式，目前只能设置跟随
    */
-  next?: 'inline'
+  next?: 'inline';
 }
 
 export type GPath =
@@ -99,13 +99,15 @@ export type GPath =
   | ['C' | 'c', number, number, number, number, number, number]
   | ['A' | 'a', number, number, number, number, number, number, number];
 
-export type Arrow = boolean | {
-  /**
-   * SVG path string of arrow
-   */
-  path: string,
-  /**
-   * @description.en-US offset distance of the arrow
-   */
-  d: number
-}
+export type Arrow =
+  | boolean
+  | {
+      /**
+       * SVG path string of arrow
+       */
+      path: string;
+      /**
+       * @description.en-US offset distance of the arrow
+       */
+      d: number;
+    };

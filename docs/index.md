@@ -1,11 +1,18 @@
-# 用React定义节点
+# 用 React 定义节点
 
 直接用 React 组件定义你的 G6 组件，自带类型提示。
 
 ```jsx
 import React from 'react';
 import G6 from '@antv/g6';
-import { Group, Rect, Text, Circle, Image, createNodeFromReact } from '@antv/g6-react-node';
+import {
+  Group,
+  Rect,
+  Text,
+  Circle,
+  Image,
+  createNodeFromReact,
+} from '@antv/g6-react-node';
 import { G6MiniDemo } from '../src/ReactNode/demo';
 
 const ReactNode = ({ cfg = {} }) => {
@@ -80,13 +87,18 @@ const ReactNode = ({ cfg = {} }) => {
 
 G6.registerNode('test', createNodeFromReact(ReactNode));
 
-export default () => <G6MiniDemo nodeType="test" count={2} />
-
-
+export default () => <G6MiniDemo nodeType="test" count={2} />;
 ```
 
 ```jsx | pure
-import { Group, Rect, Text, Circle, Image, createNodeFromReact } from '@antv/g6-react-node';
+import {
+  Group,
+  Rect,
+  Text,
+  Circle,
+  Image,
+  createNodeFromReact,
+} from '@antv/g6-react-node';
 
 const ReactNode = ({ cfg = {} }) => {
   const { description, meta = {}, label = 'label' } = cfg;
