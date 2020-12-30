@@ -1,7 +1,7 @@
 {
   "name": "g6-react-node",
   "description": "Using React Component to Define Your Graph Node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
