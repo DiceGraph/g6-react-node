@@ -11,6 +11,6 @@ export default defineConfig({
     ['en-US', 'English'],
   ],
   resolve: { includes: ['doc', 'src'] },
-  publicPath: './'
+  publicPath: '/g6-react-node/'
   // more config: https://d.umijs.org/config
 });
