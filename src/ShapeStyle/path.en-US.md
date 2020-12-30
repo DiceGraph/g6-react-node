@@ -1,5 +1,5 @@
 
-# 路径 (Path) 样式属性
+# Path Style
 
 ```jsx
 import React from 'react';

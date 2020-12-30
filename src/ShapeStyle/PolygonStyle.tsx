@@ -1,5 +1,5 @@
-import { CircleStyle } from '../ReactNode/Shape/Circle';
+import { PolygonStyle } from '../ReactNode/Shape/Polygon';
 import React from 'react';
 
-const Circle: React.FC<CircleStyle> = (props) => <div>{props}</div>
-export default Circle;
+const Polygon: React.FC<PolygonStyle> = (props) => <div>{props}</div>
+export default Polygon;

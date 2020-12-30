@@ -1,5 +1,5 @@
 
-# Circle Style
+# 圆 (Circle) 样式属性
 
 ```jsx
 import React from 'react';
@@ -15,7 +15,7 @@ const ReactNode = ({ cfg = {} }) => (
             radius: [6, 6, 0, 0],
             cursor: 'move',
             stroke: '#eee'
-            }}/>
+      }} draggable/>
     </Group>
   );
 

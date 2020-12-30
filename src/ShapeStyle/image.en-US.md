@@ -1,5 +1,5 @@
 
-# 图片 (Image) 样式属性
+# Image Style
 
 ```jsx
 import React from 'react';

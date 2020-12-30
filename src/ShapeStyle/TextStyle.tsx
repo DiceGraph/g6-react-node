@@ -1,5 +1,5 @@
-import { CircleStyle } from '../ReactNode/Shape/Circle';
+import { TextStyle } from '../ReactNode/Shape/Text';
 import React from 'react';
 
-const Circle: React.FC<CircleStyle> = (props) => <div>{props}</div>
-export default Circle;
+const Text: React.FC<TextStyle> = (props) => <div>{props}</div>
+export default Text;

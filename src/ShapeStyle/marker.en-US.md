@@ -1,17 +1,19 @@
 
-# 路径 (Path) 样式属性
+# Marker Style
 
 ```jsx
 import React from 'react';
 import G6 from '@antv/g6';
-import { Group, Path, createNodeFromReact } from '@antv/g6-react-node';
+import { Group, Marker, createNodeFromReact } from '@antv/g6-react-node';
 import { G6MiniDemo } from '../ReactNode/demo';
 
 const ReactNode = ({ cfg = {} }) => (
     <Group>
-      <Path style={{
-            path: [['M',0,0],['L',20,-7.5],
-        ['L',13.33,0],[ 'L',20,7.5] ,['Z']],
+      <Marker style={{
+    r: 40,
+    symbol: function (x, y, r) {
+      return [['M', x, y], ['L', x + r, y + r], ['L', x + r * 2, y], ['Z']];
+    },
             fill: cfg.color,
             cursor: 'move',
             stroke: '#888'
@@ -27,4 +29,4 @@ export default () => <G6MiniDemo nodeType="test" count={2} />
 
 ```
 
-<API src="./PathStyle.tsx" ></API>
+<API src="./MarkerStyle.tsx" ></API>

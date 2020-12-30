@@ -4,22 +4,15 @@ import { CommonShapeProps } from './common';
 
 export interface PolygonStyle extends CommonShapeProps {
   /**
-   * @description The x of the center of the polygon.
-   */
-  x?: number;
-  /**
-   * @description The y of the center of the polygon.
-   */
-  y?: number;
-  /**
-   * @description The points of the polygon
+   * @description.en-US The points of the polygon
+   * @description.zh-CN 组成多边形的点
    */
   points: [x: number, y: number][];
 }
 
 interface PolygonProps extends GroupProps {
   /**
-   * @description style of shape
+   * @description.en-US style of shape
    */
   style: PolygonStyle;
 }

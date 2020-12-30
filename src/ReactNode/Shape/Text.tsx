@@ -4,32 +4,49 @@ import { CommonShapeProps } from './common';
 
 export interface TextStyle extends CommonShapeProps {
   /**
-   * @description The x of the text depend on align and baseline.
+   * @description.en-US text align way, affect relative position of x
+   * @description.zh-CN 对齐方式，对齐的点为文字x的点
    */
-  x?: number;
-  /**
-   * @description The y of the text depend on align and baseline.
-   */
-  y?: number;
-  /**
-   * @description text align way, affect relative position of x
-   */
-  textAlign: 'center' | 'end' | 'left' | 'right' | 'start';
+  textAlign?: 'center' | 'end' | 'left' | 'right' | 'start';
    /**
-   * @description text baseline, affect relative position of y
+   * @description.en-US text baseline, affect relative position of y
+   * @description.zh-CN 文字基线，基线在y坐标上
    */
-  textBaseline: 'top' | 'middle' | 'bottom' | 'alphabetic' | 'hanging';
-  fontStyle: CSSProperties['fontSize'],
-  fontWeight: CSSProperties['fontWeight'],
-  fontVariant: CSSProperties['fontVariant'],
-  fontSize: CSSProperties['fontSize'],
-  fontFamily: CSSProperties['fontFamily'],
-  lineHeight: CSSProperties['lineHeight'],
+  textBaseline?: 'top' | 'middle' | 'bottom' | 'alphabetic' | 'hanging';
+  /**
+   * @description.en-US CSS font-style
+   * @description.zh-CN CSS font-style
+   */
+  fontStyle?: CSSProperties['fontStyle'],
+  /**
+   * @description.en-US CSS font-weight
+   * @description.zh-CN CSS font-weight
+   */
+  fontWeight?: CSSProperties['fontWeight'],
+  /**
+   * @description.en-US CSS font-variant
+   * @description.zh-CN CSS font-variant
+   */
+  fontVariant?: CSSProperties['fontVariant'],
+  /**
+   * @description.en-US CSS font-size
+   * @description.zh-CN CSS font-size
+   */  fontSize?: CSSProperties['fontSize'],
+  /**
+   * @description.en-US CSS font-family
+   * @description.zh-CN CSS font-family
+   */
+  fontFamily?: CSSProperties['fontFamily'],
+  /**
+   * @description.en-US CSS line-height
+   * @description.zh-CN CSS line-height
+   */
+  lineHeight?: CSSProperties['lineHeight'],
 }
 
 interface TextProps extends GroupProps {
   /**
-   * @description style of shape
+   * @description.en-US style of shape
    */
   style: TextStyle;
 }

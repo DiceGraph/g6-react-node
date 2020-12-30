@@ -4,19 +4,13 @@ import { CommonShapeProps, GPath } from './common';
 
 export interface MarkerStyle extends CommonShapeProps {
   /**
-   * @description The x of the center of the marker.
-   */
-  x?: number;
-  /**
-   * @description The y of the center of the marker.
-   */
-  y?: number;
-  /**
-   * @description The radius of the marker.
+   * @description.en-US The radius of the marker.
+   * @description.zh-CN 标记的半径
    */
   r: number;
   /**
-   * @description Built-in shapes or function return path array;
+   * @description.en-US Built-in shapes or function return path array;
+   * @description.zh-CN 内建标记 或者 生成标记路径的函数
    */
   symbol:
     | 'circle'
@@ -29,7 +23,7 @@ export interface MarkerStyle extends CommonShapeProps {
 
 interface MarkerProps extends GroupProps {
   /**
-   * @description style of shape
+   * @description.en-US style of shape
    */
   style: MarkerStyle;
 }

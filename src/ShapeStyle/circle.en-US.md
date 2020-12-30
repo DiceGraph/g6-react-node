@@ -1,21 +1,21 @@
 
-# 路径 (Path) 样式属性
+# Circle Style
 
 ```jsx
 import React from 'react';
 import G6 from '@antv/g6';
-import { Group, Path, createNodeFromReact } from '@antv/g6-react-node';
+import { Group, Circle, createNodeFromReact } from '@antv/g6-react-node';
 import { G6MiniDemo } from '../ReactNode/demo';
 
 const ReactNode = ({ cfg = {} }) => (
     <Group>
-      <Path style={{
-            path: [['M',0,0],['L',20,-7.5],
-        ['L',13.33,0],[ 'L',20,7.5] ,['Z']],
+      <Circle style={{
+            r: 45,
             fill: cfg.color,
+            radius: [6, 6, 0, 0],
             cursor: 'move',
-            stroke: '#888'
-            }} draggable/>
+            stroke: '#eee'
+            }}/>
     </Group>
   );
 
@@ -27,4 +27,4 @@ export default () => <G6MiniDemo nodeType="test" count={2} />
 
 ```
 
-<API src="./PathStyle.tsx" ></API>
+<API src="./CircleStyle.tsx" ></API>

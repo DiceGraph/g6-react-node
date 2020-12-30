@@ -1,5 +1,5 @@
 
-# Ellipse Style
+# 椭圆 (Ellipse) 样式属性
 
 ```jsx
 import React from 'react';

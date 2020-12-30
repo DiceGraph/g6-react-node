@@ -1,5 +1,5 @@
 
-# Polygon Style
+# 多边形 (Polygon) 样式属性
 
 ```jsx
 import React from 'react';

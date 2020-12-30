@@ -1,5 +1,5 @@
 
-# 矩形 (Rect) 样式属性
+# Rect Style
 
 ```jsx
 import React from 'react';

@@ -1,6 +1,8 @@
-# 用React定义节点
+# Register Node Using React
 
-直接用 React 组件定义你的 G6 组件，自带类型提示。
+How about building your G6 node using React Component with correct type inference.
+
+
 
 ```jsx
 import React from 'react';
@@ -46,10 +48,10 @@ const ReactNode = ({ cfg = {} }) => {
           }}
         >
           <Text style={{ marginTop: 5, fill: '#333', marginLeft: 4 }}>
-            描述: {description}
+            Desc: {description}
           </Text>
           <Text style={{ marginTop: 10, fill: '#333', marginLeft: 4 }}>
-            创建者: {meta.creatorName}
+            Creator: {meta.creatorName}
           </Text>
         </Rect>
       </Rect>

@@ -4,26 +4,20 @@ import { CommonShapeProps } from './common';
 
 export interface EllipseStyle extends CommonShapeProps {
   /**
-   * @description The x of the center of the Ellipse.
-   */
-  x?: number;
-  /**
-   * @description The y of the center of the Ellipse.
-   */
-  y?: number;
-  /**
-   * @description The horizontal raidus of the ellipse.
+   * @description.en-US The horizontal raidus of the ellipse.
+   * @description.zh-CN 椭圆的水平半径
    */
   rx: number;
   /**
-   * @description The vertical raidus of the ellipse.
+   * @description.en-US The vertical raidus of the ellipse.
+   * @description.zh-CN 椭圆的纵向半径
    */
   ry: number;
 }
 
 interface EllipseProps extends GroupProps {
   /**
-   * @description style of shape
+   * @description.en-US style of shape
    */
   style: EllipseStyle;
 }

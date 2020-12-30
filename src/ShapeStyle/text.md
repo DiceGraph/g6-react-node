@@ -1,5 +1,5 @@
 
-# Text Style
+# 文本 (Text) 样式属性
 
 ```jsx
 import React from 'react';

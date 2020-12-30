@@ -4,30 +4,25 @@ import { CommonShapeProps } from './common';
 
 export interface RectStyle extends CommonShapeProps {
   /**
-   * @description The x of the left top of the rect.
+   * @description.en-US The radius of the rect corner.
+   * @description.zh-CN 矩形圆角
    */
-  x?: number;
+  radius?: number | number[];
   /**
-   * @description The y of the left top of the rect.
+   * @description.en-US The width of the rect.
+   * @description.zh-CN 矩形宽度
    */
-  y?: number;
+  width?: number;
   /**
-   * @description The radius of the rect corner.
+   * @description.en-US The height of the rect.
+   * @description.zh-CN 矩形高度
    */
-  r?: number | number[];
-  /**
-   * @description The width of the rect.
-   */
-  width?: number,
-  /**
-   * @description The height of the rect.
-   */
-  height?: number,
+  height?: number;
 }
 
 interface RectProps extends GroupProps {
   /**
-   * @description style of shape
+   * @description.en-US style of shape
    */
   style: RectStyle;
 }

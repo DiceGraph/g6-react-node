@@ -4,30 +4,25 @@ import { CommonShapeProps } from './common';
 
 export interface ImageStyle extends CommonShapeProps {
   /**
-   * @description The x of the left top  of the image.
-   */
-  x?: number;
-  /**
-   * @description The y of the left top of the image.
-   */
-  y?: number;
-  /**
-   * @description The width of the image.
+   * @description.en-US The width of the image.
+   * @description.zh-CN 图片宽度
    */
   width?: number;
   /**
-   * @description The height of the image.
+   * @description.en-US The height of the image.
+   * @description.zh-CN 图片高度
    */
   height?: number;
   /**
-   * @description The img source of the image.
+   * @description.en-US The img source of the image.
+   * @description.zh-CN 图片数据源
    */
   img: string | ImageData | CanvasImageData;
 }
 
 interface ImageProps extends GroupProps {
   /**
-   * @description style of shape
+   * @description.en-US style of shape
    */
   style: ImageStyle;
 }

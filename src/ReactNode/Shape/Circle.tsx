@@ -4,22 +4,15 @@ import { CommonShapeProps } from './common';
 
 export interface CircleStyle extends CommonShapeProps {
   /**
-   * @description The x of the center of the circle.
-   */
-  x?: number;
-  /**
-   * @description The y of the center of the circle.
-   */
-  y?: number;
-  /**
-   * @description The radius of the circle.
+   * @description.en-US The radius of the circle.
+   * @description.zh-CN 圆的半径
    */
   r: number;
 }
 
 interface CircleProps extends GroupProps {
   /**
-   * @description style of shape
+   * @description.en-US style of shape
    */
   style: CircleStyle;
 }
