@@ -32,7 +32,7 @@ export const G6MiniDemo = ({
     };
 
     const width = document.getElementById('container')?.clientWidth || 800;
-    const height = 400;
+    const height = 200;
 
     const graph = new G6.Graph({
       container: 'container',
