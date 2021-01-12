@@ -47,8 +47,14 @@ export const G6MiniDemo = ({
         type: 'dagre',
       },
     });
+    const time = new Date();
     graph.data(data);
     graph.render();
+    console.log(
+      'Render time:',
+      (Number(new Date()) - Number(time)) / 1000,
+      's',
+    );
   }, [count, nodeType]);
 
   return <div id="container"></div>;

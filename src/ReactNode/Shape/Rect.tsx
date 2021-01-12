@@ -12,12 +12,12 @@ export interface RectStyle extends CommonShapeProps {
    * @description.en-US The width of the rect.
    * @description.zh-CN 矩形宽度
    */
-  width?: number;
+  width?: number | 'auto';
   /**
    * @description.en-US The height of the rect.
    * @description.zh-CN 矩形高度
    */
-  height?: number;
+  height?: number | 'auto';
 }
 
 interface RectProps extends GroupProps {

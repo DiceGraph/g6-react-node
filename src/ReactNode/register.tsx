@@ -107,8 +107,6 @@ export const registerNodeReact = (el: ReactElement) => {
 
   const target = getPositionUsingYoga(result);
 
-  console.log(target);
-
   return target;
 };
 

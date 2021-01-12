@@ -25,7 +25,6 @@ const getFourFromNumOrArr = (target: string | number | (string | number)[]) => {
         return target;
       default:
         return [0, 0, 0, 0];
-        break;
     }
   } else {
     return [target, target, target, target];
@@ -68,8 +67,6 @@ const constructYogaNode = (node: RawNode) => {
   }
   if (style.flexDirection) {
     yogaNode.setFlexDirection(FlexDirectionMap[style.flexDirection]);
-  } else {
-    yogaNode.setFlexDirection(FlexDirectionMap['column']);
   }
   if (style.flexWrap) {
     yogaNode.setFlexWrap(FlexWrapMap[style.flexWrap]);
@@ -154,11 +151,41 @@ export interface LayoutedNode extends RawNode {
 
 const getPositionUsingYoga = (root: RawNode): LayoutedNode => {
   const basicContainer = Node.create();
-  let rootArr: (RawNode & { container?: YogaNode })[] = [root];
-  let nowNode;
-  let nowContainer = basicContainer;
-  const caculateNode = (
+  const constructNodes = (node: RawNode, isRoot?: boolean) => {
+    const size = getSizeOfShape(node.type, node.attrs);
+    if (!node.attrs.width) {
+      node.attrs.width = size.width || 0;
+    }
+    if (!node.attrs.height) {
+      node.attrs.height = size.height || 0;
+    }
+    const yogaNode = constructYogaNode(node);
+    const children: (RawNode & { container: YogaNode })[] = [];
+
+    for (let i = 0; i < node.children.length; i += 1) {
+      children[i] = constructNodes(node.children[i]);
+      yogaNode.insertChild(children[i].container, i);
+    }
+
+    if (isRoot) {
+      basicContainer.insertChild(yogaNode, 0);
+    }
+
+    return {
+      ...node,
+      container: yogaNode,
+      children,
+    };
+  };
+
+  const caculateNodes = (
     node: RawNode & { container?: YogaNode },
+    parentBoundaryBox: {
+      width: number;
+      height: number;
+      x: number;
+      y: number;
+    },
   ): LayoutedNode => {
     const boundaryBox = {
       width: Number(node.attrs.width) || 0,
@@ -175,13 +202,12 @@ const getPositionUsingYoga = (root: RawNode): LayoutedNode => {
       const layout = container.getComputedLayout();
       boundaryBox.width = layout.width;
       boundaryBox.height = layout.height;
-      boundaryBox.x = layout.left;
-      boundaryBox.y = layout.top;
+      boundaryBox.x = layout.left + parentBoundaryBox.x;
+      boundaryBox.y = layout.top + parentBoundaryBox.y;
       if (['circle', 'ellipse'].includes(restNode.type)) {
         boundaryBox.x += boundaryBox.width / 2;
         boundaryBox.y += boundaryBox.height / 2;
       }
-      console.log(restNode.type);
       if (restNode.type === 'text') {
         boundaryBox.y += boundaryBox.height;
       }
@@ -193,7 +219,7 @@ const getPositionUsingYoga = (root: RawNode): LayoutedNode => {
         ...restNode.attrs,
         ...boundaryBox,
       },
-      children: restNode.children?.map(e => caculateNode(e)),
+      children: restNode.children?.map(e => caculateNodes(e, boundaryBox)),
       boundaryBox,
     };
   };
@@ -201,37 +227,15 @@ const getPositionUsingYoga = (root: RawNode): LayoutedNode => {
   // init container
   basicContainer.setWidthAuto();
   basicContainer.setHeightAuto();
-
-  while (rootArr.length) {
-    const node = rootArr.pop();
-    if (node) {
-      if (node === nowNode) {
-        nowNode = rootArr[rootArr.length - 1];
-        nowContainer = rootArr[rootArr.length - 1]?.container || basicContainer;
-      } else {
-        const size = getSizeOfShape(node.type, node.attrs);
-        if (!node.attrs.width) {
-          node.attrs.width = size.width || 0;
-        }
-        if (!node.attrs.height) {
-          node.attrs.height = size.height || 0;
-        }
-        const yogaNode = constructYogaNode(node);
-        node.container = yogaNode;
-        nowContainer.insertChild(yogaNode, nowContainer.getChildCount());
-        if (node.children && node.children.length) {
-          rootArr.push(node);
-          rootArr = rootArr.concat(node.children.reverse());
-          nowContainer = yogaNode;
-          nowNode = node;
-        }
-      }
-    }
-  }
-
+  const newNodes = constructNodes(root, true);
   basicContainer.calculateLayout();
 
-  return caculateNode(root);
+  return caculateNodes(newNodes, {
+    width: 0,
+    height: 0,
+    x: 0,
+    y: 0,
+  });
 };
 
 export default getPositionUsingYoga;
