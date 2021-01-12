@@ -4,9 +4,11 @@ import G6 from '@antv/g6';
 export const G6MiniDemo = ({
   nodeType,
   count = 1,
+  height = 200,
 }: {
   nodeType: string;
   count: number;
+  height: number;
 }) => {
   useEffect(() => {
     const data = {
@@ -32,7 +34,6 @@ export const G6MiniDemo = ({
     };
 
     const width = document.getElementById('container')?.clientWidth || 800;
-    const height = 200;
 
     const graph = new G6.Graph({
       container: 'container',
@@ -40,7 +41,7 @@ export const G6MiniDemo = ({
       height,
       fitCenter: true,
       modes: {
-        default: ['drag-node', 'drag-canvas'],
+        default: ['drag-node', 'drag-canvas', 'zoom-canvas'],
       },
       layout: {
         type: 'dagre',

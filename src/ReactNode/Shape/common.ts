@@ -1,6 +1,7 @@
+import { LayoutAttrs } from '@/Layout/LayoutEnums';
 import { CSSProperties } from 'react';
 
-export interface GShapeProps {
+export interface GShapeProps extends Partial<LayoutAttrs> {
   /**
    * @description.en-US the color used to fill the shape, support rgb(a)/hex/gradient
    * @description.zh-CN 填充图形的颜色，支持 rgb(a)/hex/G渐变色

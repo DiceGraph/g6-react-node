@@ -33,9 +33,6 @@ const ReactNode = ({ cfg = {} }) => {
         >
           <Text
             style={{
-              marginTop: 2,
-              marginLeft: 75,
-              textAlign: 'center',
               fontWeight: 'bold',
               fill: '#fff',
             }}
@@ -120,7 +117,6 @@ const ReactNode = ({ cfg = {} }) => {
             style={{
               marginTop: 2,
               marginLeft: 75,
-              textAlign: 'center',
               fontWeight: 'bold',
               fill: '#fff',
             }}
