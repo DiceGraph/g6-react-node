@@ -61,6 +61,30 @@ const getPointsSize = (points: [number, number][]) => {
   return [xmax - xmin, ymax - ymin];
 };
 
+const canvasRef: {
+  context?: CanvasRenderingContext2D;
+  timeoutSig?: ReturnType<typeof setTimeout>;
+  canvas?: HTMLCanvasElement;
+} = {};
+
+const getCanvasContext = () => {
+  let context: CanvasRenderingContext2D | null;
+  if (canvasRef.context) {
+    context = canvasRef.context;
+  } else {
+    const canvas = document?.createElement('canvas');
+    if (!canvas) {
+      return null;
+    }
+    context = canvas.getContext('2d');
+    if (context) {
+      canvasRef.canvas = canvas;
+      canvasRef.context = context;
+    }
+  }
+  return context;
+};
+
 const getTextSize = (
   text: string,
   attrs: {
@@ -70,22 +94,18 @@ const getTextSize = (
     [key: string]: any;
   },
 ) => {
-  const canvas = document?.createElement('canvas');
   const textArr = text.split('\n');
   const height =
     (attrs.fontSize || 12) * textArr.length * (attrs.lineHeight || 1);
   // Try to get canvas to measure text
-  if (canvas) {
-    const context = canvas.getContext('2d');
-    if (context) {
-      context.font = `${attrs.fontSize || 12}px ${attrs.fontFamily || ''}`;
-      const width = Math.max.apply(
-        Math,
-        textArr.map(str => context.measureText(str).width),
-      );
-      canvas.remove();
-      return [width, height];
+  const context = getCanvasContext();
+  if (context) {
+    context.font = `${attrs.fontSize || 12}px ${attrs.fontFamily || ''}`;
+    let width = 0;
+    for (let i = 0; i < textArr.length; i += 1) {
+      width = Math.max(width, context.measureText(textArr[i]).width);
     }
+    return [width, height];
   }
   // fallback solution
   return [

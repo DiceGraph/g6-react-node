@@ -28,11 +28,13 @@ const ReactNode = ({ cfg = {} }) => {
             radius: [6, 6, 0, 0],
             cursor: 'move',
             stroke: cfg.color,
+            justyfyContent: 'center',
           }}
           draggable="true"
         >
           <Text
             style={{
+              margin: [4, 5],
               fontWeight: 'bold',
               fill: '#fff',
             }}
@@ -49,10 +51,10 @@ const ReactNode = ({ cfg = {} }) => {
             radius: [0, 0, 6, 6],
           }}
         >
-          <Text style={{ marginTop: 5, fill: '#333', marginLeft: 4 }}>
+          <Text style={{ fill: '#333', margin: [8, 4] }}>
             描述: {description}
           </Text>
-          <Text style={{ marginTop: 10, fill: '#333', marginLeft: 4 }}>
+          <Text style={{ fill: '#333', margin: [6, 4] }}>
             创建者: {meta.creatorName}
           </Text>
         </Rect>
@@ -62,8 +64,8 @@ const ReactNode = ({ cfg = {} }) => {
           stroke: cfg.color,
           r: 10,
           fill: '#fff',
-          marginLeft: 75,
           cursor: 'pointer',
+          margin: [0, 'auto'],
         }}
         name="circle"
       >
@@ -73,8 +75,7 @@ const ReactNode = ({ cfg = {} }) => {
               'https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png',
             width: 12,
             height: 12,
-            marginLeft: 69,
-            marginTop: -5,
+            margin: [4, 'auto'],
           }}
         />
       </Circle>
@@ -84,7 +85,7 @@ const ReactNode = ({ cfg = {} }) => {
 
 G6.registerNode('test', createNodeFromReact(ReactNode));
 
-export default () => <G6MiniDemo nodeType="test" count={2} />;
+export default () => <G6MiniDemo nodeType="test" count={10} />;
 ```
 
 ```jsx | pure
@@ -110,13 +111,13 @@ const ReactNode = ({ cfg = {} }) => {
             radius: [6, 6, 0, 0],
             cursor: 'move',
             stroke: cfg.color,
+            justyfyContent: 'center',
           }}
           draggable="true"
         >
           <Text
             style={{
-              marginTop: 2,
-              marginLeft: 75,
+              margin: [4, 5],
               fontWeight: 'bold',
               fill: '#fff',
             }}
@@ -133,10 +134,10 @@ const ReactNode = ({ cfg = {} }) => {
             radius: [0, 0, 6, 6],
           }}
         >
-          <Text style={{ marginTop: 5, fill: '#333', marginLeft: 4 }}>
+          <Text style={{ marginTop: 5, fill: '#333', margin: [8, 4] }}>
             描述: {description}
           </Text>
-          <Text style={{ marginTop: 10, fill: '#333', marginLeft: 4 }}>
+          <Text style={{ marginTop: 10, fill: '#333', margin: [6, 4] }}>
             创建者: {meta.creatorName}
           </Text>
         </Rect>
@@ -146,8 +147,8 @@ const ReactNode = ({ cfg = {} }) => {
           stroke: cfg.color,
           r: 10,
           fill: '#fff',
-          marginLeft: 75,
           cursor: 'pointer',
+          margin: [0, 'auto'],
         }}
         name="circle"
       >
@@ -157,8 +158,7 @@ const ReactNode = ({ cfg = {} }) => {
               'https://gw.alipayobjects.com/zos/antfincdn/FLrTNDvlna/antv.png',
             width: 12,
             height: 12,
-            marginLeft: 69,
-            marginTop: -5,
+            margin: [4, 'auto'],
           }}
         />
       </Circle>

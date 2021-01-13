@@ -149,93 +149,134 @@ export interface LayoutedNode extends RawNode {
   children: LayoutedNode[];
 }
 
+type ContainerNode = RawNode & {
+  container: YogaNode;
+  children: ContainerNode[];
+};
+
+const constructNodes = (
+  root: RawNode,
+  basicContainer: YogaNode,
+): ContainerNode | null => {
+  const childrenArr = [[root]];
+  const parentArr = [];
+  let resultNode: ContainerNode | null = null;
+
+  while (childrenArr[0]) {
+    const children = childrenArr.pop() || [];
+    const parent = parentArr.pop();
+    const newChilren: ContainerNode[] = [];
+
+    for (let i = 0; i < children?.length; i += 1) {
+      const node = children[i];
+      const size = getSizeOfShape(node.type, node.attrs);
+      if (!node.attrs.width) {
+        node.attrs.width = size.width || 0;
+      }
+      if (!node.attrs.height) {
+        node.attrs.height = size.height || 0;
+      }
+      const containerNode: ContainerNode = {
+        ...node,
+        container: constructYogaNode(node),
+        children: [],
+      };
+
+      if (node.children.length) {
+        parentArr.push(containerNode);
+        childrenArr.push(node.children);
+      }
+
+      newChilren.push(containerNode);
+    }
+
+    if (!parent) {
+      resultNode = newChilren[0];
+      basicContainer.insertChild(newChilren[0].container, 0);
+    } else {
+      parent.children = newChilren;
+      for (let j = 0; j < parent.children.length; j += 1) {
+        parent.container.insertChild(parent.children[j].container, j);
+      }
+    }
+  }
+
+  return resultNode;
+};
+
+const caculateNodes = (
+  node: ContainerNode,
+  parentBoundaryBox: {
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+  },
+): LayoutedNode => {
+  const boundaryBox = {
+    width: Number(node.attrs.width) || 0,
+    height: Number(node.attrs.height) || 0,
+    x: 0,
+    y: 0,
+  };
+  let actualBondary = { ...boundaryBox };
+  const { container, ...restNode } = node;
+
+  if (restNode.attrs.position === 'absolute') {
+    boundaryBox.x = restNode.attrs.x;
+    boundaryBox.y = restNode.attrs.y;
+    actualBondary = boundaryBox;
+  } else if (container) {
+    const layout = container.getComputedLayout();
+    boundaryBox.width = layout.width;
+    boundaryBox.height = layout.height;
+    boundaryBox.x = layout.left + parentBoundaryBox.x;
+    boundaryBox.y = layout.top + parentBoundaryBox.y;
+    actualBondary = { ...boundaryBox };
+    if (['circle', 'ellipse'].includes(restNode.type)) {
+      boundaryBox.x += boundaryBox.width / 2;
+      boundaryBox.y += boundaryBox.height / 2;
+    }
+    if (restNode.type === 'text') {
+      boundaryBox.y += boundaryBox.height;
+    }
+  }
+
+  const children: LayoutedNode[] = [];
+
+  for (let i = 0; i < restNode.children.length; i += 1) {
+    children.push(caculateNodes(restNode.children[i], actualBondary));
+  }
+
+  return {
+    ...restNode,
+    attrs: {
+      ...restNode.attrs,
+      ...boundaryBox,
+    },
+    children,
+    boundaryBox,
+  };
+};
+
 const getPositionUsingYoga = (root: RawNode): LayoutedNode => {
   const basicContainer = Node.create();
-  const constructNodes = (node: RawNode, isRoot?: boolean) => {
-    const size = getSizeOfShape(node.type, node.attrs);
-    if (!node.attrs.width) {
-      node.attrs.width = size.width || 0;
-    }
-    if (!node.attrs.height) {
-      node.attrs.height = size.height || 0;
-    }
-    const yogaNode = constructYogaNode(node);
-    const children: (RawNode & { container: YogaNode })[] = [];
-
-    for (let i = 0; i < node.children.length; i += 1) {
-      children[i] = constructNodes(node.children[i]);
-      yogaNode.insertChild(children[i].container, i);
-    }
-
-    if (isRoot) {
-      basicContainer.insertChild(yogaNode, 0);
-    }
-
-    return {
-      ...node,
-      container: yogaNode,
-      children,
-    };
-  };
-
-  const caculateNodes = (
-    node: RawNode & { container?: YogaNode },
-    parentBoundaryBox: {
-      width: number;
-      height: number;
-      x: number;
-      y: number;
-    },
-  ): LayoutedNode => {
-    const boundaryBox = {
-      width: Number(node.attrs.width) || 0,
-      height: Number(node.attrs.height) || 0,
-      x: 0,
-      y: 0,
-    };
-    const { container, ...restNode } = node;
-
-    if (restNode.attrs.position === 'absolute') {
-      boundaryBox.x = restNode.attrs.x;
-      boundaryBox.y = restNode.attrs.y;
-    } else if (container) {
-      const layout = container.getComputedLayout();
-      boundaryBox.width = layout.width;
-      boundaryBox.height = layout.height;
-      boundaryBox.x = layout.left + parentBoundaryBox.x;
-      boundaryBox.y = layout.top + parentBoundaryBox.y;
-      if (['circle', 'ellipse'].includes(restNode.type)) {
-        boundaryBox.x += boundaryBox.width / 2;
-        boundaryBox.y += boundaryBox.height / 2;
-      }
-      if (restNode.type === 'text') {
-        boundaryBox.y += boundaryBox.height;
-      }
-    }
-
-    return {
-      ...restNode,
-      attrs: {
-        ...restNode.attrs,
-        ...boundaryBox,
-      },
-      children: restNode.children?.map(e => caculateNodes(e, boundaryBox)),
-      boundaryBox,
-    };
-  };
 
   // init container
   basicContainer.setWidthAuto();
   basicContainer.setHeightAuto();
-  const newNodes = constructNodes(root, true);
+  const newNodes =
+    constructNodes(root, basicContainer) ||
+    ({ ...root, container: basicContainer } as ContainerNode);
   basicContainer.calculateLayout();
-
-  return caculateNodes(newNodes, {
+  const result = caculateNodes(newNodes, {
     width: 0,
     height: 0,
     x: 0,
     y: 0,
   });
+  basicContainer.freeRecursive();
+  return result;
 };
 
 export default getPositionUsingYoga;

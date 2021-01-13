@@ -91,5 +91,5 @@ const Card = () => {
 
 G6.registerNode('test', createNodeFromReact(Card));
 
-export default () => <G6MiniDemo nodeType="test" count={500} height={800} />;
+export default () => <G6MiniDemo nodeType="test" count={10} height={400} />;
 ```
