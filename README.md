@@ -4,7 +4,7 @@
 
 ## Docs
 
-[https://dicegraph.github.io/](https://dicegraph.github.io/)
+[https://dicegraph.github.io/](https://dicegraph.github.io/g6-react-node)
 
 ## Example
 

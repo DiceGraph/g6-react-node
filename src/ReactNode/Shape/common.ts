@@ -1,4 +1,4 @@
-import { LayoutAttrs } from '@/Layout/LayoutEnums';
+import { LayoutAttrs } from '../../Layout/LayoutEnums';
 import { CSSProperties } from 'react';
 
 export interface GShapeProps extends Partial<LayoutAttrs> {

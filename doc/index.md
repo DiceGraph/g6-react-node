@@ -85,7 +85,7 @@ const ReactNode = ({ cfg = {} }) => {
 
 G6.registerNode('test', createNodeFromReact(ReactNode));
 
-export default () => <G6MiniDemo nodeType="test" count={10} />;
+export default () => <G6MiniDemo nodeType="test" count={3} />;
 ```
 
 ```jsx | pure
