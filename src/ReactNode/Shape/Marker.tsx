@@ -1,5 +1,5 @@
 import React from 'react';
-import { GroupProps } from '../Group';
+import { CommonProps } from '../Group';
 import { CommonShapeProps, GPath } from './common';
 
 export interface MarkerStyle extends CommonShapeProps {
@@ -21,7 +21,7 @@ export interface MarkerStyle extends CommonShapeProps {
     | ((x: number, y: number, r: number) => GPath[]);
 }
 
-interface MarkerProps extends GroupProps {
+interface MarkerProps extends CommonProps {
   /**
    * @description.en-US style of shape
    */

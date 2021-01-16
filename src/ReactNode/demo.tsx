@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import G6 from '@antv/g6';
+import { appenAutoShapeListener } from '../Register/event';
 
 export const G6MiniDemo = ({
   nodeType,
@@ -56,6 +57,10 @@ export const G6MiniDemo = ({
       (Number(new Date()) - Number(time)) / 1000,
       's',
     );
+    appenAutoShapeListener(graph);
+    return () => {
+      graph.destroy();
+    };
   }, [count, nodeType]);
 
   return <div id="container"></div>;

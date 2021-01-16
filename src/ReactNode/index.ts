@@ -7,4 +7,5 @@ export { default as Polygon } from './Shape/Polygon';
 export { default as Rect } from './Shape/Rect';
 export { default as Path } from './Shape/Path';
 export { default as Text } from './Shape/Text';
-export { createNodeFromReact } from './register';
+export { createNodeFromReact } from '../Register/register';
+export { appenAutoShapeListener } from '../Register/event';

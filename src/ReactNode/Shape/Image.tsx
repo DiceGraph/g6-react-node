@@ -1,5 +1,5 @@
 import React from 'react';
-import { GroupProps } from '../Group';
+import { CommonProps } from '../Group';
 import { CommonShapeProps } from './common';
 
 export interface ImageStyle extends CommonShapeProps {
@@ -20,7 +20,7 @@ export interface ImageStyle extends CommonShapeProps {
   img: string | ImageData | CanvasImageData;
 }
 
-interface ImageProps extends GroupProps {
+interface ImageProps extends CommonProps {
   /**
    * @description.en-US style of shape
    */

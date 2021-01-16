@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import { GroupProps } from '../Group';
+import { CommonProps } from '../Group';
 import { CommonShapeProps } from './common';
 
 export interface TextStyle extends CommonShapeProps {
@@ -44,7 +44,7 @@ export interface TextStyle extends CommonShapeProps {
   lineHeight?: CSSProperties['lineHeight'];
 }
 
-interface TextProps extends GroupProps {
+interface TextProps extends CommonProps {
   /**
    * @description.en-US style of shape
    */

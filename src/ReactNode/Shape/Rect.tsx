@@ -1,5 +1,5 @@
 import React from 'react';
-import { GroupProps } from '../Group';
+import { CommonProps } from '../Group';
 import { CommonShapeProps } from './common';
 
 export interface RectStyle extends CommonShapeProps {
@@ -20,7 +20,7 @@ export interface RectStyle extends CommonShapeProps {
   height?: number | 'auto';
 }
 
-interface RectProps extends GroupProps {
+interface RectProps extends CommonProps {
   /**
    * @description.en-US style of shape
    */

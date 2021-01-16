@@ -1,5 +1,5 @@
 import Yoga, { Node, YogaNode } from 'yoga-layout';
-import { RawNode } from './getDataFromReactNode';
+import { RawNode } from '../Register/getDataFromReactNode';
 import getSizeOfShape from './getShapeSize';
 import {
   DisplayMap,

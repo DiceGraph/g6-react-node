@@ -1,16 +1,16 @@
 import React from 'react';
-import { GroupProps } from '../Group';
+import { CommonProps } from '../Group';
 import { CommonShapeProps } from './common';
 
 export interface PolygonStyle extends CommonShapeProps {
   /**
-   * @description.en-US The points of the polygon
-   * @description.zh-CN 组成多边形的点
+   * @description.en-US The points of the polygon x,y
+   * @description.zh-CN 组成多边形的点 x, y
    */
-  points: [x: number, y: number][];
+  points: [number, number][];
 }
 
-interface PolygonProps extends GroupProps {
+interface PolygonProps extends CommonProps {
   /**
    * @description.en-US style of shape
    */

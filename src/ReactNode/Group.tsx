@@ -1,6 +1,7 @@
+import { EventAttrs } from '../Register/event';
 import React from 'react';
 
-export interface GroupProps {
+interface GroupProps {
   /**
    * @description.en-US The unique id of this group
    * @description.zh-CN 唯一id
@@ -32,6 +33,8 @@ export interface GroupProps {
    */
   zIndex?: number;
 }
+
+export type CommonProps = GroupProps & EventAttrs;
 
 const Group: React.FC<GroupProps> = props => {
   const { children, ...rest } = props;

@@ -60,4 +60,5 @@ export interface LayoutAttrs {
   maxWidth: number;
   minHeight: number;
   minWidth: number;
+  onClick: (e: Event) => void;
 }

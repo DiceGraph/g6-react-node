@@ -1,5 +1,5 @@
 import React from 'react';
-import { GroupProps } from '../Group';
+import { CommonProps } from '../Group';
 import { Arrow, CommonShapeProps, GPath } from './common';
 
 export interface PathStyle extends CommonShapeProps {
@@ -42,7 +42,7 @@ export interface PathStyle extends CommonShapeProps {
   miterLimit?: number;
 }
 
-interface PathProps extends GroupProps {
+interface PathProps extends CommonProps {
   /**
    * @description.en-US style of shape
    */

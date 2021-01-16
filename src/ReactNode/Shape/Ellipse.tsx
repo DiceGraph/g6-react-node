@@ -1,5 +1,5 @@
 import React from 'react';
-import { GroupProps } from '../Group';
+import { CommonProps } from '../Group';
 import { CommonShapeProps } from './common';
 
 export interface EllipseStyle extends CommonShapeProps {
@@ -15,7 +15,7 @@ export interface EllipseStyle extends CommonShapeProps {
   ry: number;
 }
 
-interface EllipseProps extends GroupProps {
+interface EllipseProps extends CommonProps {
   /**
    * @description.en-US style of shape
    */

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GroupProps } from '../Group';
+import { CommonProps } from '../Group';
 import { CommonShapeProps } from './common';
 
 export interface CircleStyle extends CommonShapeProps {
@@ -10,7 +10,7 @@ export interface CircleStyle extends CommonShapeProps {
   r: number;
 }
 
-interface CircleProps extends GroupProps {
+interface CircleProps extends CommonProps {
   /**
    * @description.en-US style of shape
    */
