@@ -19,7 +19,7 @@ const Tag = ({ text, color }) => (
   <Rect
     style={{
       fill: color,
-      padding: [5, 16, 5, 10],
+      padding: [5, 10],
       width: 'auto',
       radius: [4],
       margin: [0, 8],

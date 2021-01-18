@@ -12,5 +12,9 @@ export default defineConfig({
   ],
   resolve: { includes: ['doc', 'src'] },
   publicPath: '/g6-react-node/',
+  base: '/g6-react-node/',
+  dynamicImport: {
+    loading: '@/Loading',
+  },
   // more config: https://d.umijs.org/config
 });

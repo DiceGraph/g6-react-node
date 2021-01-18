@@ -8,17 +8,10 @@ export interface RawNode {
   props: { [key: string]: any };
 }
 
-const generateHash = () =>
-  Math.random()
-    .toString(16)
-    .slice(-12);
-
 const getShapeFromReact = (REl: ReactElement): RawNode => {
   if (typeof REl === 'string') {
     return REl;
   }
-  const hash = generateHash();
-
   if (typeof REl.type === 'string') {
     const data = REl.props['data-attr'] || {};
     const { style: attrs = {}, type, ...props } = data;

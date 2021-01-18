@@ -100,12 +100,13 @@ const getTextSize = (
   // Try to get canvas to measure text
   const context = getCanvasContext();
   if (context) {
-    context.font = `${attrs.fontSize || 12}px ${attrs.fontFamily || ''}`;
+    context.font = `${attrs.fontWeight || 'normal'} ${attrs.fontSize ||
+      12}px ${attrs.fontFamily || ''}`;
     let width = 0;
     for (let i = 0; i < textArr.length; i += 1) {
       width = Math.max(width, context.measureText(textArr[i]).width);
     }
-    return [width, height];
+    return [(width * (attrs.fontSize || 12)) / 10, height];
   }
   // fallback solution
   return [
